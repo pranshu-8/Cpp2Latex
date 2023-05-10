@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" class="bg-dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+    />
+    <meta name="generator" content="Hugo 0.104.2" />
+    <title>Cpp2Latex</title>
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/5.2/examples/cover/"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+    />
+    <script>
+      function clip_text(a_string) {
+        var input = document.createElement('input');
+        input.id = '__copyText__';
+        input.value = a_string; // OOPS! document.getElementById(divId).innerText;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        var txt = input.value;
+        input.remove();
+        console.log("OK COPIED: '" + txt + "'");
+      }
+      function clip_div(divId) {
+        return clip_text(document.getElementById(divId).innerText);
+      }
+    </script>
+    <style>
+      .containera {
+      }
+      @media (max-width: 800px) {
+        .left-column {
+          width: 100%;
+          padding: 2px;
+        }
+        .right-column {
+          width: 100%;
+          padding: 2px;
+        }
+      }
+      .left-column {
+        width: 50%; /* Take up 50% of the space */
+        padding: 20px; /* Add some padding */
+      }
+      .right-column {
+        width: 50%; /* Take up 50% of the space */
+        padding: 20px; /* Add some padding */
+      }
+      textarea {
+        max-width: 100%;
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/cover.css') }}"
+    />
+  </head>
+
+  <body class="text-bg-dark">
+    <header class="mb-auto">
+      <div
+        class="text-center cover-container d-flex w-100 h-100 p-3 mx-auto flex-column mt-auto text-white-50"
+      >
+        <img
+          class="img-fluid"
+          src="{{ url_for('static', filename='logonobg.png') }}"
+        />
+        <p>C++ to Latex Psudo-Code generator</p>
+      </div>
+    </header>
+    <div class="containera d-flex w-100 h-100 mx-auto mt-auto text-white-50">
+      <div class="left-column">
+        <form action="/display" method="POST" enctype="multipart/form-data">
+          <label>
+            <h1>C++ Code</h1>
+          </label>
+          <textarea name="code" rows="20" cols="200"></textarea>
+          <br />
+          <input
+            type="submit"
+            class="btn btn-lg btn-secondary fw-bold border-white bg-white"
+          />
+        </form>
+      </div>
+      <div class="right-column" id="output">
+        <label>
+          <h1>Latex Code</h1>
+        </label>
+        <textarea name="code" rows="20" cols="200">
+            {{output}}
+             </textarea
+        >
+        <br />
+        <a
+          href="#"
+          onClick="clip_div('copyme')"
+          class="btn btn-lg btn-secondary fw-bold border-white bg-success"
+          >Copy Text</a
+        >
+        <div class="d-none" id="copyme">{{output}}</div>
+      </div>
+    </div>
+    <footer
+      class="cover-container text-center d-flex w-100 h-100 p-3 mx-auto flex-column mt-auto text-white-50"
+    >
+      <p>
+        Made by
+        <a href="https://github.com/ayushr1" class="text-white">Ayush Rathore</a
+        >,
+        <a href="https://github.com/shardy30" class="text-white"
+          >Shardendu Shekhar Chaubey</a
+        >. and
+        <a href="https://github.com/Lokesh14120" class="text-white"
+          >Lokesh Yadav</a
+        >.
+      </p>
+    </footer>
+  </body>
+</html>
